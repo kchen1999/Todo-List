@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #86efac;
+    height: 7.5vh; 
+}
+
+.main {
+    height: 92.5vh; 
+    display: flex; 
+}
+
+.sideMenu {
+    width: 21vw;
+    background-color: #f3f4f6;
+    padding: 36px; 
+}
+
+.container {
+    width: 79vw; 
+}
