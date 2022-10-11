@@ -14,12 +14,65 @@
     display: flex; 
 }
 
-.sideMenu {
+.side-menu {
+    font-family: 'Montserrat', sans-serif;
     width: 21vw;
     background-color: #f3f4f6;
-    padding: 36px; 
+    padding: 30px; 
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+.side-menu-btn {
+    padding: 12px 9px;
+    display: flex;
+    gap: 16px; 
+    font-size: 1.1rem;
+    cursor: pointer;
+    min-width: 170px; 
+}
+
+
+.project-input {
+    height: 36px; 
+    width: 100%; 
+    padding-left: 12px; 
+}
+
+.cancel-btn, .add-btn {
+    padding: 5px 18px; 
+    width: 50%; 
+    font-size: 1.2rem;
+}
+
+.add-cancel {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px; 
+}
+
+.projects-btn {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-size: 1.6rem; 
+    font-weight: bolder;
+    cursor: pointer;
+
+}
+
+.side-menu-btn:hover {
+    background-color: #f9fafb;
+    border-radius: 2px;
 }
 
 .container {
-    width: 79vw; 
+    width: 79vw;
+    padding: 48px;  
+}
+
+.main-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 27px; 
+    font-weight: bolder;
 }

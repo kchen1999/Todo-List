@@ -1,3 +1,4 @@
+import {loadSideMenu} from './sidemenu.js';
 
 function createHeader() {
     const header = document.createElement('div'); 
@@ -8,11 +9,9 @@ function createHeader() {
 function createMain() {
     const main = document.createElement('div'); 
     main.classList.add('main'); 
-    const sideMenu = document.createElement('div'); 
-    sideMenu.classList.add('sideMenu');
     const container = document.createElement('div');
     container.classList.add('container');  
-    main.append(sideMenu);
+    main.append(loadSideMenu());
     main.append(container);
     return main; 
 }
