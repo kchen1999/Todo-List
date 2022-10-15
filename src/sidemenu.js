@@ -1,108 +1,100 @@
 import inbox from './inbox.png';
-import calendar from './calendar-today.png'; 
+import calendar from './calendar-today.png';
 import plus from './plus.png';
-import {loadInbox} from './inbox';
-import {loadToday} from './today';
-import { addProjectBtn, addProjectForm, clearProjectBtn, showProjectBtn, showProjectForm, clearProjectForm} from './projects';
-export {loadSideMenu}; 
+import { loadInbox } from './inbox';
+import { loadToday } from './today';
+import {
+  addProjectBtn, addProjectForm, clearProjectBtn, showProjectBtn, showProjectForm, clearProjectForm, addNewProject, loadProject
+} from './projects';
+
+export { loadSideMenu };
 
 function setActiveBtn(btn) {
-    const btns = document.querySelectorAll('.side-menu-btn'); 
-    [...btns].forEach((button) => {
-        if(button.classList.contains('active')) {
-            button.classList.remove('active');
-            return; 
-        }
-    })
-    btn.classList.add('active'); 
+  const btns = document.querySelectorAll('.side-menu-btn');
+  [...btns].forEach((button) => {
+    if (button.classList.contains('active')) {
+      button.classList.remove('active');
+    }
+  });
+  btn.classList.add('active');
 }
 
 function clearContainer() {
-    const container = document.querySelector('.container'); 
-    container.replaceChildren(); 
+  const container = document.querySelector('.container');
+  container.replaceChildren();
 }
 
 function loadSideMenu() {
-    const sideMenu = document.createElement('div');
-    sideMenu.classList.add('side-menu');
-    
-    const inboxBtn = document.createElement('div'); 
-    const inboxTxt = document.createElement('p');
-  
-    const todayBtn = document.createElement('div'); 
-    const todayTxt = document.createElement('p');
-    
-    const projectsBtn = document.createElement('div'); 
-    const projectsTxt = document.createElement('p');
+  const sideMenu = document.createElement('div');
+  sideMenu.classList.add('side-menu');
 
-    const inboxImg = document.createElement('img');
-    const todayImg = document.createElement('img');
+  const inboxBtn = document.createElement('div');
+  const inboxTxt = document.createElement('p');
 
-    inboxImg.src = inbox; 
-    todayImg.src = calendar;
+  const todayBtn = document.createElement('div');
+  const todayTxt = document.createElement('p');
 
-    inboxTxt.textContent = "Inbox";
-    todayTxt.textContent = "Today";
-    projectsTxt.textContent = "Projects"; 
+  const projectsHeader = document.createElement('div');
+  const projectsTxt = document.createElement('p');
 
-    inboxBtn.classList.add('side-menu-btn');
-    todayBtn.classList.add('side-menu-btn');
-    projectsBtn.classList.add('projects-btn');
+  const inboxImg = document.createElement('img');
+  const todayImg = document.createElement('img');
 
-    inboxBtn.append(inboxImg);
-    inboxBtn.append(inboxTxt);
+  inboxImg.src = inbox;
+  todayImg.src = calendar;
 
-    todayBtn.append(todayImg);
-    todayBtn.append(todayTxt);
+  inboxTxt.textContent = 'Inbox';
+  todayTxt.textContent = 'Today';
+  projectsTxt.textContent = 'Projects';
 
-    projectsBtn.append(projectsTxt);
+  inboxBtn.classList.add('side-menu-btn');
+  todayBtn.classList.add('side-menu-btn');
+  projectsHeader.classList.add('projects-header');
 
-    sideMenu.append(inboxBtn);
-    sideMenu.append(todayBtn);
-    sideMenu.append(projectsBtn);
+  inboxBtn.append(inboxImg);
+  inboxBtn.append(inboxTxt);
 
-    const newProjectBtn = addProjectBtn();
-    sideMenu.append(newProjectBtn);
-    const newProjectForm = addProjectForm();
-    newProjectForm.style.display = 'none'; 
-    sideMenu.append(newProjectForm);
+  todayBtn.append(todayImg);
+  todayBtn.append(todayTxt);
 
-    inboxBtn.addEventListener('click', () => {
-        if(inboxBtn.classList.contains('active')) {
-            return; 
-        }
-        clearContainer();
-        loadInbox(); 
-        setActiveBtn(inboxBtn);
-    });
+  projectsHeader.append(projectsTxt);
 
-    todayBtn.addEventListener('click', () => {
-        if(todayBtn.classList.contains('active')) {
-            return; 
-        }
-        clearContainer();
-        loadToday(); 
-        setActiveBtn(todayBtn);
-    });
+  sideMenu.append(inboxBtn);
+  sideMenu.append(todayBtn);
+  sideMenu.append(projectsHeader);
 
-   newProjectBtn.addEventListener('click', () => {
-        clearProjectBtn();
-        showProjectForm(); 
-        const addBtn = document.querySelector('.add-btn');
-        const cancelBtn = document.querySelector('.cancel-btn'); 
-        addBtn.addEventListener('click', () => {
-            clearProjectForm();
-            showProjectBtn();
-        })
-        cancelBtn.addEventListener('click', () => {
-            clearProjectForm();
-            showProjectBtn();
-        })
+  const newProjectBtn = addProjectBtn();
+  sideMenu.append(newProjectBtn);
 
-        
-    })
+  const newProjectForm = addProjectForm();
+  newProjectForm.style.display = 'none';
+  sideMenu.append(newProjectForm);
 
+  inboxBtn.addEventListener('click', () => {
+    if (inboxBtn.classList.contains('active')) {
+      return;
+    }
+    clearContainer();
+    loadInbox();
+    setActiveBtn(inboxBtn);
+  });
 
+  todayBtn.addEventListener('click', () => {
+    if (todayBtn.classList.contains('active')) {
+      return;
+    }
+    clearContainer();
+    loadToday();
+    setActiveBtn(todayBtn);
+  });
 
-    return sideMenu; 
+  newProjectBtn.addEventListener('click', () => {
+    clearProjectBtn();
+    showProjectForm();
+  });
+
+  return sideMenu;
 }
+
+export {clearContainer};
+export {setActiveBtn};
