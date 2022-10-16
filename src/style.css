@@ -24,7 +24,7 @@
     min-width: 250px;
 }
 
-.side-menu-btn {
+.side-btn {
     padding: 12px 9px;
     display: flex;
     gap: 16px; 
@@ -33,6 +33,20 @@
     min-width: 170px; 
 }
 
+.project {
+    padding: 12px 9px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    cursor: pointer;
+    min-width: 170px; 
+}
+
+.project-left {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+}
 
 .project-input {
     height: 36px; 
@@ -74,8 +88,8 @@
 
 }
 
-.side-menu-btn:hover {
-    background-color: #f9fafb;
+.side-menu-btn:hover, .project:hover {
+    background-color: #e5e7eb;
     border-radius: 2px;
 }
 

@@ -1,7 +1,7 @@
 import inbox from './inbox.png';
 import calendar from './calendar-today.png';
 import plus from './plus.png';
-import { loadInbox } from './inbox';
+import { loadWeek } from './week';
 import { loadToday } from './today';
 import {
   addProjectBtn, addProjectForm, clearProjectBtn, showProjectBtn, showProjectForm, clearProjectForm, addNewProject, loadProject
@@ -22,14 +22,15 @@ function setActiveBtn(btn) {
 function clearContainer() {
   const container = document.querySelector('.container');
   container.replaceChildren();
+
 }
 
 function loadSideMenu() {
   const sideMenu = document.createElement('div');
   sideMenu.classList.add('side-menu');
 
-  const inboxBtn = document.createElement('div');
-  const inboxTxt = document.createElement('p');
+  const weekBtn = document.createElement('div');
+  const weekTxt = document.createElement('p');
 
   const todayBtn = document.createElement('div');
   const todayTxt = document.createElement('p');
@@ -37,29 +38,31 @@ function loadSideMenu() {
   const projectsHeader = document.createElement('div');
   const projectsTxt = document.createElement('p');
 
-  const inboxImg = document.createElement('img');
+  const weekImg = document.createElement('img');
   const todayImg = document.createElement('img');
 
-  inboxImg.src = inbox;
+  weekImg.src = inbox;
   todayImg.src = calendar;
 
-  inboxTxt.textContent = 'Inbox';
+  weekTxt.textContent = 'This Week';
   todayTxt.textContent = 'Today';
   projectsTxt.textContent = 'Projects';
 
-  inboxBtn.classList.add('side-menu-btn');
+  weekBtn.classList.add('side-menu-btn');
+  weekBtn.classList.add('side-btn');
   todayBtn.classList.add('side-menu-btn');
+  todayBtn.classList.add('side-btn');
   projectsHeader.classList.add('projects-header');
 
-  inboxBtn.append(inboxImg);
-  inboxBtn.append(inboxTxt);
+  weekBtn.append(weekImg);
+  weekBtn.append(weekTxt);
 
   todayBtn.append(todayImg);
   todayBtn.append(todayTxt);
 
   projectsHeader.append(projectsTxt);
 
-  sideMenu.append(inboxBtn);
+  sideMenu.append(weekBtn);
   sideMenu.append(todayBtn);
   sideMenu.append(projectsHeader);
 
@@ -70,13 +73,13 @@ function loadSideMenu() {
   newProjectForm.style.display = 'none';
   sideMenu.append(newProjectForm);
 
-  inboxBtn.addEventListener('click', () => {
-    if (inboxBtn.classList.contains('active')) {
+  weekBtn.addEventListener('click', () => {
+    if (weekBtn.classList.contains('active')) {
       return;
     }
     clearContainer();
-    loadInbox();
-    setActiveBtn(inboxBtn);
+    loadWeek();
+    setActiveBtn(weekBtn);
   });
 
   todayBtn.addEventListener('click', () => {
