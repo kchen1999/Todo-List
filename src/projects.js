@@ -2,27 +2,7 @@ import list from './format-list-bulleted.png';
 import plus from './plus.png';
 import { clearContainer } from './sidemenu';
 import { setActiveBtn } from './sidemenu';
-
-const toDo = (title, description, dueDate, priority) => {
-  // const title = title;
-  // const description = description;
-  // const dueDate = dueDate;
-  // const priority = priority;
-
-  const getTitle = () => title;
-  const getDescription = () => description;
-  const getDueDate = () => dueDate;
-  const getPriority = () => priority;
-
-  const setTitle = (title) => title = title;
-  const setDescription = (description) => description = description;
-  const setDueDate = (dueDate) => dueDate = dueDate;
-  const setPriority = (priority) => priority = priority;
-
-  return {
-    getTitle, getDescription, getDueDate, getPriority, setTitle, setDescription, setDueDate, setPriority,
-  };
-};
+import { loadTasks } from './task';
 
 function loadProject(e) {
   clearContainer();
@@ -31,6 +11,7 @@ function loadProject(e) {
   mainHeader.textContent = e.currentTarget.textContent;
   mainHeader.classList.add('main-header');
   container.append(mainHeader);
+  loadTasks();
   setActiveBtn(e.currentTarget);
 }
 
@@ -68,9 +49,14 @@ function addNewProject() {
   const projectNameInput = document.querySelector('.project-input');
   const addProjectsBtn = document.querySelector('.new-project');
   const newProject = document.createElement('div');
-  newProject.textContent = projectNameInput.value; 
+  const newProjectTxt = document.createElement('text');
+  const newProjectImg = document.createElement('img');
+  newProjectTxt.textContent = projectNameInput.value; 
+  newProjectImg.src = list;
   newProject.classList.add('side-menu-btn');
   newProject.classList.add('project');
+  newProject.append(newProjectImg);
+  newProject.append(newProjectTxt);
   newProject.addEventListener('click', loadProject);
   sideMenu.insertBefore(newProject, addProjectsBtn);
   projectNameInput.value = ''; 

@@ -44,6 +44,19 @@
     padding: 5px 18px; 
     width: 50%; 
     font-size: 1.2rem;
+    color: black;
+    border-radius: 4px;
+    border-style: solid;
+}
+
+.cancel-btn {
+    background-color: #fecaca;
+    border-color: #fecaca;
+}
+
+.add-btn {
+    background-color: #bbf7d0;
+    border-color: #bbf7d0;
 }
 
 .add-cancel {
@@ -69,10 +82,33 @@
 .container {
     width: 79vw;
     padding: 48px;  
+    display: flex;
+    flex-direction: column;
+    gap: 6px; 
 }
 
 .main-header {
     font-family: 'Montserrat', sans-serif;
     font-size: 27px; 
     font-weight: bolder;
+}
+
+.new-task {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    display: flex;
+    gap: 16px; 
+    padding: 12px 9px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.new-task:hover {
+    background-color: #f3f4f6;
+    border-radius: 2px;
+}
+
+.new-task > img {
+    width: 24px; 
+    height: 24px; 
 }
