@@ -140,3 +140,5 @@ export { showProjectBtn };
 export { clearProjectForm };
 export { showProjectForm };
 export { loadProject };
+export { showExitBtn };
+export { hideExitBtn };

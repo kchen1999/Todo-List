@@ -46,6 +46,7 @@
     display: flex;
     align-items: center;
     gap: 16px; 
+    width: 100%; 
 }
 
 .project-input {
@@ -109,12 +110,18 @@
 
 .new-task {
     font-family: 'Montserrat', sans-serif;
-    width: 100%;
     display: flex;
     gap: 16px; 
     padding: 12px 9px;
     font-size: 1.1rem;
     cursor: pointer;
+}
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+    width: 100%; 
 }
 
 .new-task:hover {
@@ -125,4 +132,15 @@
 .new-task > img {
     width: 24px; 
     height: 24px; 
+}
+
+#date {
+    width: 200px; 
+    padding-left: 6px;
+}
+
+.date-container {
+    width: 200px; 
+    display: flex;
+    justify-content: flex-end;
 }

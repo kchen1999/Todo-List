@@ -1,5 +1,8 @@
 import plus from './plus.png';
 import circle from './plus-circle-outline.png';
+import close from './close-thick.png';
+import {showExitBtn} from './projects';
+import {hideExitBtn} from './projects';
 
 /*const toDo = (title, dueDate) => {
   const title = title;
@@ -67,19 +70,59 @@ function showTasksBtn() {
   taskBtn.style.display = 'flex';
 }
 
-function addTask() {
+function removeTask(e) {
+  e.currentTarget.parentNode.remove();
+}
+
+function showDateInput(e) {
+  const dateContainer = e.currentTarget.parentNode.querySelector('.date-container');
+  dateContainer.style.display = 'none';
+  const inputDate = e.currentTarget.parentNode.querySelector('#date');
+  inputDate.style.display = 'inline';
+  inputDate.addEventListener('mousedown', () => {
+    if (inputDate.value.length > 0) {
+      dateContainer.textContent = inputDate.value;
+      inputDate.style.display = 'none';
+      dateContainer.style.display = 'block';
+      dateContainer.addEventListener('click', showDateInput);
+    }
+  });
+}
+
+function addTaskItem() {
   clearTasksForm(); 
   const container = document.querySelector('.container');
   const taskNameInput = container.querySelector('.project-input');
   const addTaskBtn = document.querySelector('.task-btn');
   const newTask = document.createElement('div');
+  const newTaskLeft = document.createElement('div');
   newTask.classList.add('new-task');
+  newTaskLeft.classList.add('task-left');
   const newTaskImg = document.createElement('img');
   const newTaskTxt = document.createElement('p');
+  const exitBtn = document.createElement('img');
+  const inputDate = document.createElement('input');
+  const dateContainer = document.createElement('div');
+  dateContainer.textContent = 'No date';
+  dateContainer.classList.add('date-container');
+  inputDate.type = 'date';
+  inputDate.id = 'date';
   newTaskImg.src = circle;
+  exitBtn.src = close;
+  exitBtn.classList.add('exit-btn');
   newTaskTxt.textContent = taskNameInput.value; 
-  newTask.append(newTaskImg);
-  newTask.append(newTaskTxt);
+  newTaskLeft.append(newTaskImg);
+  newTaskLeft.append(newTaskTxt);
+  newTask.append(newTaskLeft);
+  newTask.append(dateContainer);
+  newTask.append(inputDate);
+  inputDate.style.display = 'none';
+  newTask.append(exitBtn);
+  exitBtn.style.display = 'none';
+  dateContainer.addEventListener('click', showDateInput);
+  exitBtn.addEventListener('click', removeTask);
+  newTask.addEventListener('mouseover', showExitBtn);
+  newTask.addEventListener('mouseleave', hideExitBtn);
   container.insertBefore(newTask, addTaskBtn);
   taskNameInput.value = ''; 
   showTasksBtn(); 
@@ -98,7 +141,7 @@ function showTasksForm() {
   const addBtn = taskForm.querySelector('.add-btn');
   const cancelBtn = taskForm.querySelector('.cancel-btn');
   taskForm.style.display = 'block';
-  addBtn.addEventListener('click', addTask);
+  addBtn.addEventListener('click', addTaskItem);
   cancelBtn.addEventListener('click', cancelTask);
 }
 
